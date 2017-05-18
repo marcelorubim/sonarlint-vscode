@@ -21,20 +21,53 @@
         "SonarLint"
     ],
     "activationEvents": [
-        "onLanguage:javascript"
+        "onLanguage:javascript",
+		"onLanguage:typescriptreact",
+        "onCommand:sonarlint.createConfig"
     ],
     "contributes": {
         "configuration": {
             "type": "object",
-            "title": "SonarLint configuration",
+            "title": "SonarLint",
             "properties": {
                 "sonarlint.testFilePattern": {
                     "type": ["string", "null"],
                     "default": ".*[tT]est.*",
-                    "description": "Files whose name match this pattern are considered as test files"
+                    "description": "Files whose name match this regexp pattern are considered as test files"
+                },
+                "sonarlint.servers": {
+                    "type": ["array", "null"],
+                    "items": [
+                        {
+                            "title": "SonarQube server connection",
+                            "type": "object",
+                            "properties": {
+                                "id": {"description": "Unique identifier of the server connection. Will be referred in 'sonarlint.json' of your project", "type": "string"},
+                                "url": {"description": "URL to the SonarQube server", "type": "string"},
+                                "organization": {"description": "Organization key (if applicable)", "type": "string"},
+                                "token": {"description": "Authentication token", "type": "string"}
+                            },
+                            "additionalProperties": false,
+                            "required": ["id", "url"]
+                        }
+                    ],
+                    "default": [ {
+                        "id": "sonarqube.com",
+                        "url": "https://sonarqube.com",
+                        "organization": "",
+                        "token": ""
+                    } ],
+                    "description": "Servers connection details. Server id can later be referred from 'sonarlint.json' file in your project."
                 }
             }
-        }
+        },
+        "commands": [
+            {
+				"title": "Create a 'sonarlint.json' file",
+				"category": "SonarLint",
+				"command": "sonarlint.createConfig"
+			}
+        ]
     },
     "main": "./out/src/extension",
     "files": [
