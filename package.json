@@ -49,7 +49,8 @@
             "null"
           ],
           "default": "{**/test/**,**/*test*,**/*Test*}",
-          "description": "Files whose name match this glob pattern are considered as test files"
+          "description": "Files whose name match this glob pattern are considered as test files",
+          "scope": "resource"
         },
         "sonarlint.analyzerProperties": {
           "type": [
@@ -63,12 +64,14 @@
             }
           },
           "default": null,
-          "description": "Extra properties that will be passed to the analyzers. For example {\"sonar.javascript.globals\": \"xxx\"}. See documentation of each analyzers."
+          "description": "Extra properties that will be passed to the analyzers. For example {\"sonar.javascript.globals\": \"xxx\"}. See documentation of each analyzers.",
+          "scope": "resource"
         },
         "sonarlint.disableTelemetry": {
           "type": "boolean",
           "default": false,
-          "description": "Disable sending anonymous usage statistics"
+          "description": "Disable sending anonymous usage statistics",
+          "scope": "window"
         },
         "sonarlint.ls.javaHome": {
           "type": [
@@ -76,7 +79,8 @@
             "null"
           ],
           "default": null,
-          "description": "Specifies the folder path to the JRE 8 used to launch the SonarLint Language Server. For example \"C:\\\\Program Files\\\\Java\\\\jre1.8.0_131"
+          "description": "Specifies the folder path to the JRE 8 used to launch the SonarLint Language Server. For example \"C:\\\\Program Files\\\\Java\\\\jre1.8.0_131",
+          "scope": "window"
         },
         "sonarlint.ls.vmargs": {
           "type": [
@@ -84,7 +88,26 @@
             "null"
           ],
           "default": null,
-          "description": "Specifies extra VM arguments used to launch the SonarLint Language Server. For example \"-Xmx1024m\""
+          "description": "Specifies extra VM arguments used to launch the SonarLint Language Server. For example \"-Xmx1024m\"",
+          "scope": "window"
+        },
+        "sonarlint.connectedMode.servers": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "default": null,
+          "description": "Specifies the list of SonarQube servers",
+          "scope": "window"
+        },
+        "sonarlint.connectedMode.project": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "default": null,
+          "description": "Specifies the SonarQube server to which the current project is bound",
+          "scope": "window"
         }
       }
     }
