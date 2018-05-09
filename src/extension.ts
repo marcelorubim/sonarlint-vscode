@@ -27,7 +27,8 @@ declare var v8debug;
 const DEBUG = typeof v8debug === "object" || startedInDebugMode();
 var oldConfig;
 
-const updateServerStorageCommandName = "SonarLint.UpdateServerStorage";
+const openRuleDescriptionCommandName = "SonarLint/OpenRuleDesc";
+const updateServerStorageCommandName = "SonarLint/UpdateServerStorage";
 
 const connectedModeServersSectionName = "connectedMode.servers";
 const connectedModeProjectSectionName = "connectedMode.project";
@@ -271,7 +272,7 @@ export function activate(context: VSCode.ExtensionContext) {
   const showRuleUri = VSCode.Uri.parse("sonarlint-rule://show");
 
   const openRuleCommand = VSCode.commands.registerCommand(
-    "SonarLint.OpenRuleDesc",
+    openRuleDescriptionCommandName,
     (
       ruleKey: string,
       ruleName: string,
