@@ -415,9 +415,8 @@ function capitalizeName(name: string) {
   return name.replace(/\b(\w)/g, s => s.toUpperCase());
 }
 
-function base64_encode(file) {
-  const bitmap = FS.readFileSync(file);
-  return new Buffer(bitmap).toString("base64");
+function base64_encode(file: string) {
+  return FS.readFileSync(file).toString("base64");
 }
 
 function onConfigurationChange() {
