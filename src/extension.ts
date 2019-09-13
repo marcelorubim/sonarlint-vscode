@@ -207,6 +207,7 @@ export function activate(context: VSCode.ExtensionContext) {
         productName: "SonarLint VSCode",
         productVersion: VSCode.extensions.getExtension("SonarSource.sonarlint-vscode").packageJSON
           .version,
+        ideVersion: VSCode.version,
         disableTelemetry: configuration ? configuration.get("disableTelemetry", false) : false,
         typeScriptLocation: tsPath ? Path.dirname(Path.dirname(tsPath)) : undefined,
         includeRuleDetailsInCodeAction: true,
