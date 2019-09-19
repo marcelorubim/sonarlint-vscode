@@ -100,7 +100,7 @@ function languageServerCommand(
   port: number
 ): { command: string; args: string[] } {
   const serverJar = Path.resolve(context.extensionPath, 'server', 'sonarlint-ls.jar');
-  const javaExecutablePath = Path.resolve(requirements.java_home + '/bin/java');
+  const javaExecutablePath = Path.resolve(requirements.javaHome + '/bin/java');
 
   const params = [];
   if (DEBUG) {
