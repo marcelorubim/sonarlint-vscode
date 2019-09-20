@@ -46,6 +46,12 @@ const jarDependencies = [
     artifactId: 'sonar-html-plugin',
     version: '3.2.0.2082',
     output: 'analyzers/sonarhtml.jar'
+  },
+  {
+    groupId: 'org/sonarsource/java',
+    artifactId: 'sonar-java-plugin',
+    version: '5.14.0.18788',
+    output: 'analyzers/sonarjava.jar'
   }
 ];
 

@@ -42,6 +42,19 @@ suite('Extension Test Suite', () => {
     vscode.commands.executeCommand('workbench.action.closeActiveEditor');
   }).timeout(60 * 1000);
 
+  test('should report issue on single java file', async function() {
+    const fileUri = vscode.Uri.file(path.join(__dirname, sampleFolderLocation, 'sample-java', 'Main.java'));
+    const document = await vscode.workspace.openTextDocument(fileUri);
+    const editor = await vscode.window.showTextDocument(document);
+
+    var diags = await waitForSonarLintDiagnostics(fileUri);
+
+    assert.deepEqual(diags.length, 1);
+    assert.equal(diags[0].message, "Remove this unused \"i\" local variable. (squid:S1481)");
+
+    vscode.commands.executeCommand('workbench.action.closeActiveEditor');
+  }).timeout(60 * 1000);
+
   async function waitForSonarLintDiagnostics(fileUri) {
     var diags = getSonarLintDiagnostics(fileUri);
     while (diags.length == 0) {
